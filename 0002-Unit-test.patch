@@ -1,0 +1,26 @@
+From 74d2137dc065efd1d2f9f30538405d1350a70df1 Mon Sep 17 00:00:00 2001
+From: CHIRAG <cgupta_be21@thapar.edu>
+Date: Mon, 29 May 2023 18:43:59 +0530
+Subject: [PATCH 2/2] Unit test
+
+---
+ client_test.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/client_test.py b/client_test.py
+index af2bf26..f32836f 100644
+--- a/client_test.py
++++ b/client_test.py
+@@ -15,7 +15,8 @@ class ClientTest(unittest.TestCase):
+       {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+     ]
+     """ ------------ Add the assertion below ------------ """
+-
++    for quote in quotes:
++       self.assertEqual(getDataPoint(quote),{quote['stock'],quote['top_bid']['price'],quote['top_ask']['price'], {quote['top_bid']['price'] + quote['top_ask']['price']}/2})
+ 
+   """ ------------ Add more unit tests ------------ """
+ 
+-- 
+2.33.0.windows.2
+
